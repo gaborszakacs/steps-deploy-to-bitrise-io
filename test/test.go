@@ -122,6 +122,7 @@ func ParseTestResults(testsRootDir string) (results Results, err error) {
 	// read dirs in base tests dir
 	// <root_tests_dir>
 
+	fmt.Printf("Reading from: %s\n", testsRootDir)
 	testDirs, err := ioutil.ReadDir(testsRootDir)
 	if err != nil {
 		return nil, err
@@ -246,6 +247,8 @@ func (results Results) Upload(apiToken, endpointBaseURL, appSlug, buildSlug stri
 		if err != nil {
 			return err
 		}
+
+		fmt.Printf("\n\nXMLContent: %s\n", result.XMLContent)
 
 		var (
 			uploadResponse   UploadResponse
